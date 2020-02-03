@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import './demo/listview_demo.dart';
 import './demo/hello_demo.dart';
+import './demo/drawer_demo.dart';
+import './demo/bottom_navigation_bar_demo.dart';
+import './demo/listview_demo.dart';
 
 void main() => runApp(App());
 class App extends StatelessWidget {
@@ -19,6 +22,7 @@ class App extends StatelessWidget {
 }
 
 class Home extends StatelessWidget {
+
   @override
     Widget build(BuildContext context) {
       return DefaultTabController(
@@ -54,40 +58,13 @@ class Home extends StatelessWidget {
          ),
         body: TabBarView(
            children: <Widget>[
-             Icon(Icons.local_florist, size: 128.0, color: Colors.black12),
+             ListViewDemo(),
              Icon(Icons.change_history, size: 128.0, color: Colors.black12),
              Icon(Icons.directions_bike, size: 128.0, color: Colors.black12),
            ],
          ),
-        drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              DrawerHeader(
-                child: Text('header'.toUpperCase()),
-                decoration: BoxDecoration(
-                  color: Colors.grey[100],
-                ),
-              ),
-              ListTile(
-                title: Text('Messages', textAlign: TextAlign.right),
-                trailing: Icon(Icons.message, color: Colors.black12, size: 22.0,),
-                onTap: () => Navigator.pop(context),
-              ),
-              ListTile(
-                title: Text('Favorite', textAlign: TextAlign.right),
-                trailing: Icon(Icons.favorite, color: Colors.black12, size: 22.0,),
-                onTap: () => Navigator.pop(context),
-              ),
-              ListTile(
-                title: Text('Setting', textAlign: TextAlign.right),
-                trailing: Icon(Icons.settings, color: Colors.black12, size: 22.0,), 
-                onTap: () => Navigator.pop(context),
-              ),
-
-            ],
-          ),
-        ) // 左边抽屉drawer  右边抽屉endDrawer
+        drawer: DrawerDemo(),
+        bottomNavigationBar: BottomNavigationBarDemo(),
        )
       );
     }
