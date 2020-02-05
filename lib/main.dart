@@ -8,6 +8,7 @@ import './demo/basic_deom.dart';
 import './demo/layout_demo.dart';
 import './demo/view_demo.dart';
 import './demo/sliver_demo.dart';
+import './demo/navigator_demo.dart';
 
 void main() => runApp(App());
 class App extends StatelessWidget {
@@ -16,6 +17,11 @@ class App extends StatelessWidget {
      return MaterialApp(
        debugShowCheckedModeBanner: false, // 是否显示调试flutter右上角的默认图
        home: Home(),
+      //  initialRoute: '/', 
+       routes: {
+        //  '/': (context) => NavigatorDemo(), // 报错
+        '/about': (context) => Page(title: 'About'),
+       },
        theme: ThemeData(
          primarySwatch: Colors.yellow, // 导航条背景色
          highlightColor: Color.fromRGBO(255, 255, 255, 0.5), // 主题高亮颜色
