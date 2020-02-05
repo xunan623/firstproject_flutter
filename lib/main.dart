@@ -9,6 +9,7 @@ import './demo/layout_demo.dart';
 import './demo/view_demo.dart';
 import './demo/sliver_demo.dart';
 import './demo/navigator_demo.dart';
+import './demo/form_demo.dart';
 
 void main() => runApp(App());
 class App extends StatelessWidget {
@@ -16,16 +17,18 @@ class App extends StatelessWidget {
    Widget build(BuildContext context) {
      return MaterialApp(
        debugShowCheckedModeBanner: false, // 是否显示调试flutter右上角的默认图
-       home: Home(),
-      //  initialRoute: '/', 
+      //  home: Home(),
+       initialRoute: '/form', 
        routes: {
         //  '/': (context) => NavigatorDemo(), // 报错
         '/about': (context) => Page(title: 'About'),
+        '/form': (context) => FormDemo(),
        },
        theme: ThemeData(
          primarySwatch: Colors.yellow, // 导航条背景色
          highlightColor: Color.fromRGBO(255, 255, 255, 0.5), // 主题高亮颜色
          splashColor: Colors.white70, // 点击按钮水波纹颜色
+         accentColor:  Color.fromRGBO(3, 54, 255, 1.0),
        )
      );
    }
