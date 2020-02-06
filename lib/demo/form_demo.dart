@@ -38,7 +38,7 @@ class RegisterFormState extends State<RegisterForm> {
         registerFormKey.currentState.save();
       debugPrint('username: $username password: $password');
 
-      Scaffold.of(context).showSnackBar(
+      Scaffold.of(context).showSnackBar( // 小Tip提示
         SnackBar(
           content: Text('Registering...'),
         )
