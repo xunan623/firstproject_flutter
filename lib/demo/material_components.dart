@@ -1,9 +1,17 @@
+import 'package:firstproject/demo/slider_demo.dart';
 import 'package:flutter/material.dart';
 import './button_demo.dart';
 import './floating_action_button.dart';
 import './popup_menu_button_demo.dart';
+import './form_demo.dart';
+import './check_demo.dart';
+import './radio_demo.dart';
+import './switch_demo.dart';
+import './slider_demo.dart';
+import './datetime_demo.dart';
 
 class MaterialComponments extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,24 +22,46 @@ class MaterialComponments extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           ListItem(
-            title: 'FloatingActionButton',
-            page: FloatingActionButtonDemo(),
+            title: 'CheckBox',
+            page: CheckBoxDemo(),
+          ),
+          ListItem(
+            title: 'RadioDemo',
+            page: RadioDemo(),
+          ),
+          ListItem(
+            title: 'SwitchDemo',
+            page: SwitchDemo(),
+          ),
+          ListItem(
+            title: 'SliderDemo',
+            page: SliderDemo(),
+          ),
+          ListItem(
+            title: 'DateTimeDemo',
+            page: DateTimeDemo(),
+          ),
+          ListItem(
+            title: 'Form',
+            page: FormDemo(),
           ),
           ListItem(
             title: 'Button',
             page: ButtonDemo(),
           ),
-                    ListItem(
+          ListItem(
             title: 'PopupMenuButton',
             page: PopuMenuButtonDemo(),
-          )
-
+          ),
+          ListItem(
+            title: 'FloatingActionButton',
+            page: FloatingActionButtonDemo(),
+          ),
         ],
       ),
     );
   }
 }
-
 
 class _WidgetDemo extends StatelessWidget {
   @override
@@ -61,7 +91,6 @@ class _WidgetDemo extends StatelessWidget {
     );
   }
 }
-
 
 class ListItem extends StatelessWidget {
   final String title;
