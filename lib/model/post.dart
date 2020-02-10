@@ -5,6 +5,7 @@ class Post {
   final String author;
   final String desc;
   final String imageUrl;
+  bool selected = false;
 }
 
 final List<Post> posts = [

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import '../model/post.dart';
 
 class DataTableDemo extends StatefulWidget {
   _DataTableDemoState createState() => _DataTableDemoState();
 }
 
 class _DataTableDemoState extends State<DataTableDemo> {
+  int _sortColumnIndex;
+  bool _sortAscending = true;
 
   @override
   Widget build(BuildContext context) {
@@ -18,29 +21,56 @@ class _DataTableDemoState extends State<DataTableDemo> {
         child: ListView(
           children: <Widget>[
             DataTable(
-              columns: [
-                DataColumn(
-                  label: Text('Title')
-                ),
-                DataColumn(
-                  label: Text('Author')
-                ),
-              ], 
-              rows: [
-                DataRow(cells: [
-                  DataCell(Text('hello ~')),
-                  DataCell(Text('哈哈哈 ~')),
-                ]),
-                DataRow(cells: [
-                  DataCell(Text('hola ~')),
-                  DataCell(Text('高中 ~')),
-                ]),
-                DataRow(cells: [
-                  DataCell(Text('hello ~')),
-                  DataCell(Text('公客 ~')),
-                ]),
-              ]
-            )
+                sortColumnIndex: _sortColumnIndex, // 排序
+                sortAscending: _sortAscending, // 降序
+                // onSelectAll: (bool value) { // 全选
+
+                // },
+                columns: [
+                  DataColumn(
+                    label: Container(
+                      // width: 150.0,
+                      child: Text('Title'),
+                    ),
+                    onSort: (int index, bool ascending) {
+                      setState(() {
+                        _sortColumnIndex = index;
+                        _sortAscending = ascending;
+
+                        posts.sort((a, b) {
+                          if (!ascending) {
+                            final c = a;
+                            a = b;
+                            b = c;
+                          }
+                          return a.title.length.compareTo(b.title.length);
+                        });
+                      });
+                    },
+                  ),
+                  DataColumn(
+                    label: Text('Author'),
+                  ),
+                  DataColumn(
+                    label: Text('Image'),
+                  ),
+                ],
+                rows: posts.map((post) {
+                  return DataRow(
+                    selected: post.selected,
+                    onSelectChanged: (bool value) {
+                      setState(() {
+                        if (post.selected != value) {
+                          post.selected = value;
+                        } 
+                      });
+                    },
+                    cells: [
+                    DataCell(Text(post.title)),
+                    DataCell(Text(post.author)),
+                    DataCell(Image.network(post.imageUrl))
+                  ]);
+                }).toList())
           ],
         ),
       ),
