@@ -26,7 +26,7 @@ class App extends StatelessWidget {
         '/about': (context) => Page(title: 'About'),
         '/form': (context) => FormDemo(),
         '/mdc': (context) => MaterialComponments(),
-        '/state-management': (context) => StateManagement1Demo(),
+        '/state-management': (context) => StateManagementDemo(),
 
        },
        theme: ThemeData(
