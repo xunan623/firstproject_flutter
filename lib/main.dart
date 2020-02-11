@@ -12,6 +12,7 @@ import './demo/navigator_demo.dart';
 import './demo/form_demo.dart';
 import './demo/material_components.dart';
 import './demo/state/state_management_demo.dart';
+import './demo/stream/stream_demo.dart';
 
 void main() => runApp(App());
 class App extends StatelessWidget {
@@ -20,14 +21,14 @@ class App extends StatelessWidget {
      return MaterialApp(
        debugShowCheckedModeBanner: false, // 是否显示调试flutter右上角的默认图
       //  home: Home(),
-       initialRoute: '/state-management', 
+       initialRoute: '/stream', 
        routes: {
         //  '/': (context) => NavigatorDemo(), // 报错
         '/about': (context) => Page(title: 'About'),
         '/form': (context) => FormDemo(),
         '/mdc': (context) => MaterialComponments(),
         '/state-management': (context) => StateManagementDemo(),
-
+        '/stream' : (context) => StreamDemo(),
        },
        theme: ThemeData(
          primarySwatch: Colors.yellow, // 导航条背景色
